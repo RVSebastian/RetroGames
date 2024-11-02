@@ -4,9 +4,9 @@ try {
     // Intentar conectar al servidor local
     $conn = mysqli_connect(
         'sql529.main-hosting.eu',
-        'u528371127_2toPZ',
-        '313312venenoXD#',
-        'u528371127_fuda2'
+        'u667101417_automarcol',
+        'Automarcol+2023*',
+        'u667101417_automarcol'
     );
 
     if ($conn->connect_errno) {
@@ -20,9 +20,9 @@ try {
     // Intentar conectar al servidor remoto
     $conn = mysqli_connect(
         'localhost',
-        'u528371127_2toPZ',
-        '313312venenoXD#',
-        'u528371127_fuda2'
+        'u667101417_automarcol',
+        'Automarcol+2023*',
+        'u667101417_automarcol'
     );
 
     if ($conn->connect_errno) {
