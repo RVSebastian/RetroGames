@@ -96,7 +96,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $conn->close();
     }
-    
+    if ($_POST['mod'] == 'delete') {
+        $id_juego = $_POST['id_juego'];
+        $q = 'DELETE games WHERE id_juego = ' . $id_juego;
+        $result = mysqli_query($conn,$q);
+    }
     if ($_POST['mod'] == 'add') {
         $nombre = $_POST['titulo'];
         $descripcion = $_POST['descripcion'];
@@ -114,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         if ($stmt = $conn->prepare($sql)) {
             // Vincular parámetros y ejecutar la consulta
-            $stmt->bind_param("ssssssss", $nombre, $descripcion, $plataforma, $categorias, $contenido, $game, $estado, $type, $version, $formato);
+            $stmt->bind_param("ssssssssss", $nombre, $descripcion, $plataforma, $categorias, $contenido, $game, $estado, $type, $version, $formato);
             
             if ($stmt->execute()) {
                 $last_id = $stmt->insert_id;

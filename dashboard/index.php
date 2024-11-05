@@ -447,7 +447,7 @@ $(document).ready(function() {
                 });
                 console.log('Formulario enviado correctamente');
                 console.log(response);
-                location.reload();
+                //location.reload();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({

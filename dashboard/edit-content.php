@@ -153,6 +153,9 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                     <button type="submit" id="saveButton"
                         class="mt-2 px-2.5 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600">Guardar</button>
 
+                    <button type="button" id="deleteButton" data-id="<?php echo $row['id']; ?>"
+                        class="mt-2 px-2.5 py-2 bg-red-500 text-white rounded shadow hover:bg-red-600">Eliminar</button>
+
                 </div>
                 <div class='bg-white md:col-span-6 lg:col-span-4  p-5'>
                     <div class="px-3 pt-2 pb-5">
@@ -358,6 +361,37 @@ $(document).ready(function() {
         return isValid;
     }
 
+    $('#deleteButton').submit(function(e) {
+        e.preventDefault();
+
+        var id = $(this).data('id');
+
+        formData.append('id_juego', id); // Agrega la variable mod=edit al FormData
+        formData.append('mod', 'delete'); // Agrega la variable mod=edit al FormData
+
+        $.ajax({
+            url: './components/content/res.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                console.log('Formulario enviado correctamente');
+                console.log(response);
+                location.assign('./index');
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al enviar el formulario: ' + textStatus
+                });
+                console.log('Error al enviar el formulario: ' + textStatus, errorThrown);
+            }
+        });
+    });
+    
     $('#gameForm').submit(function(e) {
         e.preventDefault();
 
@@ -368,7 +402,7 @@ $(document).ready(function() {
                 text: 'Por favor, completa todos los campos requeridos.'
             });
             return;
-        }zapatos blancos hombrez
+        }
 
         var formData = new FormData(this);
         formData.append('mod', 'edit'); // Agrega la variable mod=edit al FormData
@@ -387,7 +421,7 @@ $(document).ready(function() {
                 console.log('Formulario enviado correctamente');
                 console.log(response);
                 location.assign('./index');
-                
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({
