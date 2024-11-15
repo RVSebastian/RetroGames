@@ -102,11 +102,11 @@ if ($pos !== false) {
             </li>
         </ul>
     </div>
-    <section class="home-section" style="background: #f2f2f3 !important;">
+    <section class="home-section">
         <nav>
-            <div class="sidebar-button">
+            <div class="sidebar-button text-white">
                 <i class='bx bx-menu sidebarBtn'></i>
-                <span class="dashboard">Dashboard</span>
+                <span class="dashboard text-white">Dashboard</span>
 
             </div>
 
@@ -146,7 +146,7 @@ if ($pos !== false) {
             position: fixed;
             height: 100%;
             width: 230px;
-            background: rgb(255, 255, 255);
+            background: white;
             transition: all 0.3s ease;
         }
 
@@ -215,7 +215,7 @@ if ($pos !== false) {
 
         .home-section {
             position: relative;
-            background: rgb(243, 244, 246) !important;
+            background: #f2f4f4 !important;
             min-height: 100vh;
             width: calc(100% - 230px);
             left: 230px;
@@ -231,7 +231,8 @@ if ($pos !== false) {
             display: flex;
             justify-content: space-between;
             height: 70px;
-            background: #131313;
+            background: #1c2833;
+            text: white;
             color: white;
             display: flex;
             align-items: center;
@@ -240,7 +241,7 @@ if ($pos !== false) {
             left: 230px;
             z-index: 100;
             padding: 0 50px;
-            box-shadow: 9px 0px 16px 10px rgba(0, 0, 0, 0.1);
+           
             transition: all 0.5s ease;
         }
 

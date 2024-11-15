@@ -77,7 +77,8 @@ $result = mysqli_query($conn,$q);
                             <div class="image-container-relevant">
                                 <a href="./detalle?d=<?php echo base64_encode($row['id']) ?>">
                                     <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
-                                        alt="">
+                                        alt=""
+                                        onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';">
                                 </a>
                             </div>
                             <p class="text-white pt-2"><?php echo $row['nombre'] ?></p>
@@ -85,12 +86,12 @@ $result = mysqli_query($conn,$q);
                         <?php 
                         $count++;
                         } ?>
-                        
+
                     </div>
 
                 </div>
             </div>
-            
+
             <h3 class="titulo-card text-white pt-3">Most view</h3>
             <div class="row pb-3 mt-0 pt-0" style="overflow:hidden">
                 <div class="swiper-container">
@@ -109,7 +110,8 @@ $result = mysqli_query($conn,$q);
                             <div class="image-container">
                                 <a href="./detalle?d=<?php echo base64_encode($row['id']) ?>">
                                     <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
-                                        alt="">
+                                        alt=""
+                                        onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';">
                                 </a>
                             </div>
                             <p class="text-white pt-2"><?php echo $row['nombre'] ?></p>
@@ -141,7 +143,8 @@ $result = mysqli_query($conn,$q);
                             <div class="image-container">
                                 <a href="./detalle?d=<?php echo base64_encode($row['id']) ?>">
                                     <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
-                                        alt="">
+                                        alt=""
+                                        onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';">
                                 </a>
                             </div>
                             <p class="text-white pt-2"><?php echo $row['nombre'] ?></p>
@@ -169,8 +172,9 @@ $result = mysqli_query($conn,$q);
                         <div class="swiper-slide">
                             <div class="image-container">
                                 <a href="./detalle?d=<?php echo base64_encode($game['id']) ?>">
-                                    <img src="./dashboard/components/content/uploads/<?php echo $game['id'].'/'.$game['portada'] ?>"
-                                        alt="">
+                                    <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
+                                        alt=""
+                                        onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';">
                                 </a>
                             </div>
                             <p class="text-white pt-2"><?php echo $game['nombre'] ?></p>

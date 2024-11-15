@@ -2,11 +2,13 @@
 
 include '../../includes/cn.php';
 
-$titulo = $_POST['titulo'];
-$descripcion = $_POST['descripcion'];
+
+$titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
+$descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : '';
 $categories = isset($_POST['categories']) ? $_POST['categories'] : [];
-$contenido = $_POST['contenido'];
-$rom = $_POST['rom'];
+$contenido = isset($_POST['contenido']) ? $_POST['contenido'] : '';
+$rom = isset($_POST['rom']) ? $_POST['rom'] : ' ';
+
 
 // Manejar archivo de portada
 if (isset($_FILES['portada']) && $_FILES['portada']['error'] == UPLOAD_ERR_OK) {
@@ -35,15 +37,49 @@ echo json_encode([
 ]);
 */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_POST['mod'] === 'delete') {
+        // Validar y sanitizar el input recibido
+        $id_juego = isset($_POST['id']) ? intval($_POST['id']) : 0;
+    
+        if ($id_juego > 0) { // Verifica que el ID sea válido
+            // Preparar la consulta
+            $q = 'DELETE FROM games WHERE id = ?';
+            $stmt = mysqli_prepare($conn, $q);
+    
+            if ($stmt) {
+                // Asociar el parámetro
+                mysqli_stmt_bind_param($stmt, 'i', $id_juego);
+    
+                // Ejecutar la consulta
+                if (mysqli_stmt_execute($stmt)) {
+                    echo 'El juego se eliminó correctamente.';
+                } else {
+                    echo 'Error al eliminar el juego: ' . mysqli_error($conn);
+                }
+    
+                // Cerrar el statement
+                mysqli_stmt_close($stmt);
+            } else {
+                echo 'Error al preparar la consulta: ' . mysqli_error($conn);
+            }
+        } else {
+            echo 'ID inválido.';
+        }
+    } 
+
     if ($_POST['mod'] == 'edit') {
-        $id_juego = $_POST['id_juego']; // Asegúrate de tener el ID del juego que se está editando
+        $id_juego = $_POST['id_juego']; // ID del juego a editar
         
         // Recuperar datos actuales del juego desde la base de datos
-        $sql_select = "SELECT nombre, descripcion, plataforma, categorias, contenido, game, type, portada, img1, img2, img3, img4 FROM games WHERE id = ?";
+        $sql_select = "SELECT nombre, descripcion, plataforma, categorias, contenido, game, type, portada, img1, img2, img3, img4, version, formato FROM games WHERE id = ?";
         if ($stmt_select = $conn->prepare($sql_select)) {
             $stmt_select->bind_param("i", $id_juego);
             $stmt_select->execute();
-            $stmt_select->bind_result($nombre_actual, $descripcion_actual, $plataforma_actual, $categorias_actual, $contenido_actual, $game_actual, $type_actual, $portada_actual, $img1_actual, $img2_actual, $img3_actual, $img4_actual);
+            $stmt_select->bind_result(
+                $nombre_actual, $descripcion_actual, $plataforma_actual, $categorias_actual, 
+                $contenido_actual, $game_actual, $type_actual, $portada_actual, $img1_actual, 
+                $img2_actual, $img3_actual, $img4_actual, $version_actual, $formato_actual
+            );
             $stmt_select->fetch();
             $stmt_select->close();
         } else {
@@ -59,6 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $contenido = !empty($_POST['contenido']) ? $_POST['contenido'] : $contenido_actual;
         $game = !empty($_POST['rom']) ? $_POST['rom'] : $game_actual;
         $type = !empty($_POST['type']) ? $_POST['type'] : $type_actual;
+        $version = !empty($_POST['version']) ? $_POST['version'] : $version_actual;
+        $formato = !empty($_POST['formato']) ? $_POST['formato'] : $formato_actual;
         
         // Actualizar las imágenes solo si se proporcionan nuevas
         function updateImage($fileInputName, $target_dir, $current_image) {
@@ -80,9 +118,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $img4 = updateImage('capture_4', $target_dir, $img4_actual);
         
         // Actualizar la fila con los datos nuevos
-        $sql_update = "UPDATE games SET nombre=?, descripcion=?, plataforma=?, categorias=?, contenido=?, game=?, type=?, portada=?, img1=?, img2=?, img3=?, img4=? WHERE id=?";
+        $sql_update = "UPDATE games SET nombre=?, descripcion=?, plataforma=?, categorias=?, contenido=?, game=?, type=?, portada=?, img1=?, img2=?, img3=?, img4=?, version=?, formato=? WHERE id=?";
         if ($stmt_update = $conn->prepare($sql_update)) {
-            $stmt_update->bind_param("sssssssssssss", $nombre, $descripcion, $plataforma, $categorias, $contenido, $game, $type, $portada, $img1, $img2, $img3, $img4, $id_juego);
+            $stmt_update->bind_param(
+                "ssssssssssssssi", 
+                $nombre, $descripcion, $plataforma, $categorias, $contenido, $game, $type, 
+                $portada, $img1, $img2, $img3, $img4, $version, $formato, $id_juego
+            );
             if ($stmt_update->execute()) {
                 echo "Juego actualizado correctamente.";
             } else {
@@ -92,15 +134,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             echo "Error preparando la consulta UPDATE: " . $conn->error;
         }
-
-        
+    
         $conn->close();
     }
-    if ($_POST['mod'] == 'delete') {
-        $id_juego = $_POST['id_juego'];
-        $q = 'DELETE games WHERE id_juego = ' . $id_juego;
-        $result = mysqli_query($conn,$q);
-    }
+    
+    
+
     if ($_POST['mod'] == 'add') {
         $nombre = $_POST['titulo'];
         $descripcion = $_POST['descripcion'];

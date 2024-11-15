@@ -81,19 +81,19 @@ foreach ($result as $row){
                         <div class="col-12">
                             <img class="text-center mx-auto img-fluid" style="max-width: 200px;"
                                 src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
+                                onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
                                 alt="">
                         </div>
                         <div class="col-12">
                             <?php
                             if ($row['type'] == 'ROM') {
-                                if (preg_match('/\.[a-zA-Z0-9]{2,5}$/', $row['game'])) {
-                             
                             ?>
-                            
-                            <a dowload href="<?php echo $row['game'] ?>" class="btn btn-success text-white mt-3"><i class='bx bx-arrow-to-bottom'></i>
+
+                            <a dowload target="_blank" href="<?php echo $row['game'] ?>"
+                                class="btn btn-success text-white mt-3 boton_descargar" onClick="boton_descargar(<?php echo $row['id'] ?>)"><i
+                                    class='bx bx-arrow-to-bottom'></i>
                                 Descargar ROM</a>
                             <?php
-                           }    
                              }else{
                                 echo '<p class="text-white pt-3" style="font-size: 13px !important;">Este juego es Online, no necesita descargarse para ejecutarse.</p>';
                             }
@@ -116,7 +116,7 @@ foreach ($result as $row){
                             echo '    <p class="text-white">'.$category.'</p>';
                         }
                         ?>
-                       
+
                     </div>
                 </div>
                 <div>
@@ -248,7 +248,9 @@ foreach ($result as $row){
                             ?>
                             <div class="swiper-slide">
                                 <div class="image-container-detail">
-                                    <img src="<?php echo $imagePath; ?>" alt="">
+                                    <img src="<?php echo $imagePath; ?>"
+                                        onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
+                                        alt="">
                                 </div>
                             </div>
                             <?php 
@@ -278,6 +280,7 @@ foreach ($result as $row){
                                     <div class="image-container-detail">
                                         <a href="./detalle?d=<?php echo base64_encode($row['id']) ?>">
                                             <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
+                                                onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
                                                 alt="">
 
                                         </a>
@@ -327,6 +330,23 @@ var swiper4 = new Swiper('.swiper-container-detail', {
         },
     },
 });
+
+function boton_descargar(id) {
+    $.ajax({
+        type: "POST",
+        url: "./php/dw.php",
+        data: {
+            id
+        },
+        success: function(response) {
+            console.log(response);
+                if (response === 'Se guardó correctamente.') {
+                    console.log('ok');
+                    
+                }
+        }
+    });
+}
 </script>
 <?php 
 } ?>

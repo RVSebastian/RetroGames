@@ -44,34 +44,53 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
     return in_array($categoria, $categorias_seleccionadas);
 }
 ?>
-<div class="home-content" id="2">
+
+<div class="home-content md:mx-5" id="2">
     <form id="gameForm">
         <input type="hidden" name="id_juego" id="id_juego" value="<?php echo $ud; ?>">
         <div class="content basis-11/12 px-4 md:mx-5 pb-6">
-            <a href="./index" class="pt-1 pb-4 text-sm text-gray-900 hover:cursor-pointer" id="back"><i
-                    class='bx bx-chevron-left'></i> Regresar</a>
+            <div class="w-full  px-4 py-2 mx-auto bg-white shadow-md rounded-md lg:py-3 mb-4">
+                <div class="container items-center mx-auto text-slate-800">
+                    <a href="./index"
+                        class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 pb-2 text-sm text-gray-900 hover:cursor-pointer"
+                        id="back"><i class='bx bx-chevron-left'></i> Regresar</a>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-6 gap-4 ">
-                <div class="bg-white md:col-span-6 lg:col-span-2 p-5">
+                <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full md:col-span-6 lg:col-span-2 p-5 ">
                     <div class="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
                             <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Titulo</label>
                             <input type="text" id="titulo" name="titulo" value="<?php echo $row['nombre'] ?>"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                placeholder="John" />
                         </div>
                         <div>
-                            <label for="descripcion"
-                                class="block mb-2 text-sm font-medium text-gray-900">Descripcion</label>
+                            <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900">Peso</label>
                             <input type="text" id="descripcion" name="descripcion"
                                 value="<?php echo $row['descripcion'] ?>"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="Doe" />
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                placeholder="1MB" />
+                        </div>
+                        <div>
+                            <label for="version" class="block mb-2 text-sm font-medium text-gray-900">Version</label>
+                            <input type="text" id="version" name="version" value="<?php echo $row['version'] ?>"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                placeholder="1.0" />
+                        </div>
+                        <div>
+                            <label for="formato" class="block mb-2 text-sm font-medium text-gray-900">Formato</label>
+                            <input type="text" id="formato" name="formato" value="<?php echo $row['formato'] ?>"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                                placeholder="NSP" />
                         </div>
                         <div class="">
                             <label for="categories"
                                 class="block mb-2 text-sm font-medium text-gray-900">Plataforma</label>
                             <div class="relative">
                                 <select
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 text-left"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     name="plataforma" id="plataforma">
                                     <option selected value="<?php echo $row['plataforma'] ?>">
                                         <?php echo $row['plataforma'] ?></option>
@@ -99,7 +118,7 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                                 class="block mb-2 text-sm font-medium text-gray-900">Categorías</label>
                             <div class="relative">
                                 <button id="dropdownButton2" type="button"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 text-left">
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
                                     Seleccionar categorías
                                     <svg class="w-4 h-4 ml-2 float-right" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -129,20 +148,20 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
 
                     <p class="pb-2">Contenido adicional</p>
                     <textarea
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        name="contenido" id="contenido" style="width: 100%; height: 300px;"></textarea>
+                        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+                        name="contenido" id="contenido" style="width: 100%; height: 300px;"><?php echo $row['contenido'] ?></textarea>
 
                     <label class="block mt-2 mb-2 text-sm font-medium text-gray-900" for="file_input">URL
                         Website</label>
                     <input placeholder="www.prueba.com/rom.rar" value="<?php echo $row['game'] ?>"
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                         aria-describedby="file_input_help" id="rom" name="rom" type="text">
 
                     <div class="py-3">
                         <label for="type" class="block mb-2 text-sm font-medium text-gray-900">Plataforma</label>
                         <div class="relative">
                             <select
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 text-left"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                 name="type" id="type">
                                 <option selected value="<?php echo $row['type'] ?>"><?php echo $row['type'] ?></option>
                                 <option value="ROM">ROM</option>
@@ -157,8 +176,8 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                         class="mt-2 px-2.5 py-2 bg-red-500 text-white rounded shadow hover:bg-red-600">Eliminar</button>
 
                 </div>
-                <div class='bg-white md:col-span-6 lg:col-span-4  p-5'>
-                    <div class="px-3 pt-2 pb-5">
+                <div class='md:col-span-6 lg:col-span-4 bg-white shadow rounded-lg mb-4 p-4 sm:p-6'>
+                    <div class="px-5 pt-4 pb-5">
                         <p class="">Caratula o Portada</p>
                         <p class="text-gray-600 text-sm mb-4"><i class='bx bx-bell'></i> Apartado de las imagenes que se
                             mostrara en la caratura de las tarjetas ( los tamaños no son exactos, es para ver
@@ -197,7 +216,7 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                             </div>
                         </div>
                         <input
-                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                             aria-describedby="file_input_help" id="portada" type="file" name="portada">
 
                         <p class="pt-8">Captures</p>
@@ -214,7 +233,7 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                                 ?>
                                 " style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-1">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_1" type="file"
                                     name="capture_1">
 
@@ -229,7 +248,7 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                                 ?>
                                 " style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-2">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_2" type="file"
                                     name="capture_2">
 
@@ -242,7 +261,7 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                                 }
                                 ?>" style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-3">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_3" type="file"
                                     name="capture_3">
 
@@ -256,7 +275,7 @@ function estaSeleccionada($categoria, $categorias_seleccionadas) {
                                 }
                                 ?>" style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-4">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_4" type="file"
                                     name="capture_4">
 
@@ -361,37 +380,68 @@ $(document).ready(function() {
         return isValid;
     }
 
-    $('#deleteButton').submit(function(e) {
+    $('#deleteButton').click(function(e) {
         e.preventDefault();
-
         var id = $(this).data('id');
 
-        formData.append('id_juego', id); // Agrega la variable mod=edit al FormData
-        formData.append('mod', 'delete'); // Agrega la variable mod=edit al FormData
-
-        $.ajax({
-            url: './components/content/res.php',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                console.log('Formulario enviado correctamente');
-                console.log(response);
-                location.assign('./index');
-
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un error al enviar el formulario: ' + textStatus
+        // Mostrar confirmación con SweetAlert
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'No podrás deshacer esta acción.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Realizar la solicitud AJAX solo si el usuario confirma
+                $.ajax({
+                    url: './components/content/res.php',
+                    type: 'POST',
+                    data: {
+                        id,
+                        mod: 'delete',
+                    },
+                    success: function(response) {
+                        if (response == 'El juego se eliminó correctamente.') {
+                            console.log('Formulario enviado correctamente');
+                            console.log(response);
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Éxito',
+                                text: 'Contenido eliminado correctamente'
+                            }).then(() => {
+                                location.assign(
+                                    './index'
+                                    ); // Redireccionar después de la confirmación del mensaje
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Hubo un error al enviar el formulario: ' +
+                                    response
+                            });
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Hubo un error al enviar el formulario: ' +
+                                textStatus
+                        });
+                        console.log('Error al enviar el formulario: ' + textStatus,
+                            errorThrown);
+                    }
                 });
-                console.log('Error al enviar el formulario: ' + textStatus, errorThrown);
             }
         });
     });
-    
+
+
     $('#gameForm').submit(function(e) {
         e.preventDefault();
 
@@ -413,14 +463,22 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             success: function(response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: 'Formulario enviado correctamente.'
-                });
-                console.log('Formulario enviado correctamente');
                 console.log(response);
-                location.assign('./index');
+                if (response === 'Juego actualizado correctamente.') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Formulario enviado correctamente.'
+                    });
+                    location.assign('./index');
+                }else{
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al enviar el formulario: ' + response
+                });
+                }
+
 
             },
             error: function(jqXHR, textStatus, errorThrown) {

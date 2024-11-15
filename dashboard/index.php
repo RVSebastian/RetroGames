@@ -24,9 +24,9 @@ $(document).ready(function() {
 
 <div class="home-content" id="1">
     <div id="logs" class="content basis-11/12 px-4 pb-8 md:mx-2">
-        <div class="bg-white rounded mx-5 p-5 pt-2">
-            <div class='basis-11/12 md:px-3'>
-                <div class="flex justify-between items-center py-2 mb-4">
+        <div class="lg:px-4 sm:px-2 pt-2 ">
+            <div class='basis-11/12 md:px-3 w-full px-2 mb-7'>
+                <div class="flex justify-between items-center">
                     <div class="relative w-full pr-4">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -36,14 +36,15 @@ $(document).ready(function() {
                             </svg>
                         </div>
                         <input type="search" id="buscar_logs"
-                            class="p-4 pl-10 block w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                            class="w-full bg-white shadow-md rounded-md placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md pl-10 pr-3 py-4 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow peer"
                             placeholder="Buscar contenido">
                     </div>
                     <button type="button" id="add-content" class="bg-blue-500 py-2 px-3 rounded-full text-white"><i
-                            class='bx bxs-collection'></i></button>
+                            class='bx bx-add-to-queue'></i></button>
                 </div>
             </div>
-            <div class='basis-11/12'>
+
+            <div class='basis-11/12 md:px-3 w-full px-2'>
                 <div class="relative overflow-x-auto pb-5">
                     <table class="w-full text-sm text-left text-gray-500 table-auto" id="tabla_logs">
                         <tbody>
@@ -52,10 +53,11 @@ $(document).ready(function() {
                                 $result_task = mysqli_query($conn, $query);
                                 while ($row = mysqli_fetch_array($result_task)) { 
                             ?>
-                            <tr class="border-b border-gray-150 text-gray-900 hover:bg-gray-50">
-                                <td class="p-2">
-                                    <img src="./components/content/uploads/<?php echo $row['id'].'/'.$row['portada']; ?>"
-                                        class="w-20 h-20 object-cover rounded-lg" alt="Carátula">
+                            <tr
+                                class="border-b border-gray-150 text-gray-900 hover:bg-gray-50 bg-white shadow-md rounded-md">
+                                <td class="p-2 text-center">
+                                    <img src="./components/content/uploads/<?php echo $row['id'].'/'.$row['portada']; ?>" onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
+                                        class="w-16 h-20 object-fill rounded-lg" alt="Carátula">
                                 </td>
                                 <td class="p-2 font-semibold">
                                     <?php echo $row['nombre']; ?>
@@ -80,18 +82,10 @@ $(document).ready(function() {
                                     <i class='bx bx-cloud-download text-lg text-slate-600'></i>
                                     <?php echo $row['dowloads']; ?>
                                 </td>
-                                <td class="p-2">
-                                    <?php  
-                                    if ($row['estado'] == '0') {
-                                        echo '<i class="bx bx-bulb text-yellow-600 text-lg"></i>';
-                                    }else{
-                                        echo '<i class="bx bx-bulb text-red-600 text-lg"></i>';
-                                    }
-                                    ?>
-                                </td>
+                                
                                 <td class="p-2">
                                     <a href="./edit-content?v=<?php echo $row['id']; ?>" class="p-2 text-lg">
-                                        <i class='bx bx-dots-vertical'></i>
+                                        <i class='bx bx-edit-alt'></i>
                                     </a>
                                 </td>
                             </tr>
@@ -104,39 +98,41 @@ $(document).ready(function() {
     </div>
 </div>
 
-<div class="home-content hidden" id="2">
-   
+<div class="home-content hidden md:mx-5" id="2">
     <form id="gameForm">
         <div class="content basis-11/12 px-4 md:mx-5 pb-6">
-        <p class="pt-1 pb-4 text-sm text-gray-900 hover:cursor-pointer" id="back"><i class='bx bx-chevron-left'></i> Regresar</p>
+            <div class="w-full  px-4 py-2 mx-auto bg-white shadow-md rounded-md lg:py-3 mb-4">
+                <div class="container items-center mx-auto text-slate-800">
+                    <a href="./index"
+                        class="mr-4 block cursor-pointer py-1.5 text-base text-slate-800  pb-2 text-sm text-gray-900 hover:cursor-pointer"
+                        id="back"><i class='bx bx-chevron-left'></i> Regresar</a>
+                </div>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-6 gap-4 ">
-                <div class="bg-white md:col-span-6 lg:col-span-2 p-5">
+                <div class="bg-white shadow-md rounded-md md:col-span-6 lg:col-span-2 p-5">
                     <div class="grid gap-6 mb-6 md:grid-cols-2">
                         <div>
                             <label for="titulo" class="block mb-2 text-sm font-medium text-gray-900">Titulo</label>
                             <input type="text" id="titulo" name="titulo"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                 placeholder="John" />
                         </div>
                         <div>
-                            <label for="descripcion"
-                                class="block mb-2 text-sm font-medium text-gray-900">Peso</label>
+                            <label for="descripcion" class="block mb-2 text-sm font-medium text-gray-900">Peso</label>
                             <input type="text" id="descripcion" name="descripcion"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                 placeholder="1MB" />
                         </div>
                         <div>
-                            <label for="version"
-                                class="block mb-2 text-sm font-medium text-gray-900">Version</label>
+                            <label for="version" class="block mb-2 text-sm font-medium text-gray-900">Version</label>
                             <input type="text" id="version" name="version"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                 placeholder="1.0" />
                         </div>
                         <div>
-                            <label for="formato"
-                                class="block mb-2 text-sm font-medium text-gray-900">Formato</label>
+                            <label for="formato" class="block mb-2 text-sm font-medium text-gray-900">Formato</label>
                             <input type="text" id="formato" name="formato"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                 placeholder="NSP" />
                         </div>
                         <div class="">
@@ -144,7 +140,7 @@ $(document).ready(function() {
                                 class="block mb-2 text-sm font-medium text-gray-900">Plataforma</label>
                             <div class="relative">
                                 <select
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 text-left"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow text-left"
                                     name="plataforma" id="plataforma">
                                     <option value="Switch">Nintendo Switch</option>
                                     <option value="WIIU">WII U</option>
@@ -173,7 +169,7 @@ $(document).ready(function() {
                                 class="block mb-2 text-sm font-medium text-gray-900">Categorías</label>
                             <div class="relative">
                                 <button id="dropdownButton2" type="button"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 text-left">
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow text-left">
                                     Seleccionar categorías
                                     <svg class="w-4 h-4 ml-2 float-right" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -227,20 +223,20 @@ $(document).ready(function() {
 
                     <p class="pb-2">Contenido adicional</p>
                     <textarea
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                         name="contenido" id="contenido" style="width: 100%; height: 300px;"></textarea>
 
                     <label class="block mt-2 mb-2 text-sm font-medium text-gray-900" for="file_input">URL
                         Website</label>
                     <input placeholder="www.prueba.com/rom.rar"
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                        class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                         aria-describedby="file_input_help" id="rom" name="rom" type="text">
 
                     <div class="py-3">
                         <label for="type" class="block mb-2 text-sm font-medium text-gray-900">Plataforma</label>
                         <div class="relative">
                             <select
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 text-left"
+                                class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow text-left"
                                 name="type" id="type">
                                 <option value="ROM">ROM</option>
                                 <option value="Online">ONLINE</option>
@@ -251,7 +247,7 @@ $(document).ready(function() {
                         class="mt-2 px-2.5 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600">Guardar</button>
 
                 </div>
-                <div class='bg-white md:col-span-6 lg:col-span-4  p-5'>
+                <div class='bg-white shadow-md rounded-md md:col-span-6 lg:col-span-4  p-5'>
                     <div class="px-3 pt-2 pb-5">
                         <p class="">Caratula o Portada</p>
                         <p class="text-gray-600 text-sm mb-4"><i class='bx bx-bell'></i> Apartado de las imagenes que se
@@ -277,7 +273,7 @@ $(document).ready(function() {
                             </div>
                         </div>
                         <input
-                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                            class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                             aria-describedby="file_input_help" id="portada" type="file" name="portada">
 
                         <p class="pt-8">Captures</p>
@@ -288,7 +284,7 @@ $(document).ready(function() {
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s"
                                     style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-1">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_1" type="file"
                                     name="capture_1">
 
@@ -297,7 +293,7 @@ $(document).ready(function() {
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s"
                                     style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-2">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_2" type="file"
                                     name="capture_2">
 
@@ -306,7 +302,7 @@ $(document).ready(function() {
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s"
                                     style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-3">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_3" type="file"
                                     name="capture_3">
 
@@ -316,7 +312,7 @@ $(document).ready(function() {
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOwRConBYl2t6L8QMOAQqa5FDmPB_bg7EnGA&s"
                                     style="width: 250px; height: 180px" class="mb-4" alt="" id="capture-4">
                                 <input
-                                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                    class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                     aria-describedby="file_input_help" id="capture_input_4" type="file"
                                     name="capture_4">
 
@@ -440,14 +436,20 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             success: function(response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Éxito',
-                    text: 'Formulario enviado correctamente.'
+                if (response === 'Registro creado y actualizado correctamente.') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Formulario enviado correctamente.'
+                    });
+                    location.assign('./index');
+                }else{
+                    Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al enviar el formulario: ' + response
                 });
-                console.log('Formulario enviado correctamente');
-                console.log(response);
-                //location.reload();
+                }  
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({

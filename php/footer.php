@@ -77,6 +77,7 @@ if (swiper2) {
     console.log('cargo');
     $('.swiper-wrapper').toggleClass('d-none');
 }
+
 </script>
 
 </body>

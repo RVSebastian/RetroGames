@@ -323,15 +323,15 @@ body {
 @media (max-width : 680px) {
 
     .image-container-detail {
-        height: 160px !important;
+        height: 180px !important;
     }
 
     .image-container {
-        height: 120px !important;
+        height: 150px !important;
     }
 
     .image-container-relevant {
-        height: 160px !important;
+        height: 220px !important;
     }
 
     .footer-1 {
@@ -397,7 +397,7 @@ label {
 .video-container video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     opacity: 0.7;
 }
 
@@ -472,7 +472,7 @@ label {
 .image-container {
     position: relative;
     width: 100%;
-    height: 180px;
+    height: 200px;
     overflow: hidden;
     /* Ajusta el radio para dar forma a la imagen */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -482,7 +482,7 @@ label {
 .image-container-detail {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 300px;
     overflow: hidden;
     /* Ajusta el radio para dar forma a la imagen */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -492,7 +492,7 @@ label {
 .image-container-relevant {
     position: relative;
     width: 100%;
-    height: 230px;
+    height: 250px;
     overflow: hidden;
     /* Ajusta el radio para dar forma a la imagen */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -502,19 +502,19 @@ label {
 .image-container-detail img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .image-container-relevant img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
     /* Ajuste de la imagen dentro del contenedor */
 }
 </style>
