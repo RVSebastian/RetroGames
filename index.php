@@ -157,6 +157,7 @@ $result = mysqli_query($conn,$q);
                 </div>
             </div>
 
+
             <?php foreach ($games_by_category as $category => $games): ?>
             <h3 class="titulo-card text-white pt-3"><?php echo ucfirst($category); ?></h3>
             <div class="row pb-3 mt-0 pt-0" style="overflow:hidden">
@@ -172,7 +173,7 @@ $result = mysqli_query($conn,$q);
                         <div class="swiper-slide">
                             <div class="image-container">
                                 <a href="./detalle?d=<?php echo base64_encode($game['id']) ?>">
-                                    <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
+                                    <img src="./dashboard/components/content/uploads/<?php echo $game['id'].'/'.$game['portada'] ?>"
                                         alt=""
                                         onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';">
                                 </a>

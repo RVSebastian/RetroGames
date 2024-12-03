@@ -59,7 +59,7 @@ $(document).ready(function() {
 .image-container-detail {
     position: relative;
     width: 100%;
-    height: 230px;
+    height: 260px;
     overflow: hidden;
     /* Ajusta el radio para dar forma a la imagen */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -69,7 +69,7 @@ $(document).ready(function() {
 .image-container-detail img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }
 </style>
 <section class="container-fluid search-section" style="padding-top: 14vh;" id="advanced-search">
@@ -111,7 +111,7 @@ $(document).ready(function() {
                 <div class="image-container-detail">
                     <a href="./detalle?d=<?php echo base64_encode($row['id']); ?>">
                         <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada']; ?>"
-                            alt="<?php echo $row['nombre']; ?>">
+                            alt="<?php echo $row['nombre']; ?>"  onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';">
                         <?php if ($row['type'] === 'online') { ?>
                        
                         <?php } ?>
@@ -120,7 +120,6 @@ $(document).ready(function() {
                 <span class="boxicon bx bx-link-external"
                 style="position: absolute; top: 5px; right: 5px; font-size: 24px; color: red;"></span>
                 <p class="text-white pt-2"><?php echo $row['nombre'] ?></p>
-                <p class="text-white pt-2"><?php echo $row['type'] ?></p>
             </div>
             <?php } ?>
         </div>
