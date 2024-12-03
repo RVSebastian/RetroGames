@@ -34,6 +34,8 @@ foreach ($result_task as $row) {
 $categorias_posibles = [
     "accion" => "Acción",
     "aventura" => "Aventura",
+    "simulacion" => "Simulación",
+    "android" => "Android",
     "deportes" => "Deportes",
     "estrategia" => "Estrategia",
     "rpg" => "RPG"

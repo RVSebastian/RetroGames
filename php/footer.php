@@ -5,10 +5,6 @@
             <a class="nav-link active text-white" aria-current="page" href="./index">Home</a>
         </li>
         <li class="nav-item text-center mx-md-4">
-            <i class='bx bxs-game text-center text-white'></i>
-            <a class="nav-link text-white" href="./games">Games</a>
-        </li>
-        <li class="nav-item text-center mx-md-4">
             <i class='bx bx-search text-center text-white'></i>
             <a class="nav-link text-white" href="./search">Search</a>
         </li>

@@ -56,7 +56,8 @@ $(document).ready(function() {
                             <tr
                                 class="border-b border-gray-150 text-gray-900 hover:bg-gray-50 bg-white shadow-md rounded-md">
                                 <td class="p-2 text-center">
-                                    <img src="./components/content/uploads/<?php echo $row['id'].'/'.$row['portada']; ?>" onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
+                                    <img src="./components/content/uploads/<?php echo $row['id'].'/'.$row['portada']; ?>"
+                                        onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
                                         class="w-16 h-20 object-fill rounded-lg" alt="Carátula">
                                 </td>
                                 <td class="p-2 font-semibold">
@@ -82,7 +83,7 @@ $(document).ready(function() {
                                     <i class='bx bx-cloud-download text-lg text-slate-600'></i>
                                     <?php echo $row['dowloads']; ?>
                                 </td>
-                                
+
                                 <td class="p-2">
                                     <a href="./edit-content?v=<?php echo $row['id']; ?>" class="p-2 text-lg">
                                         <i class='bx bx-edit-alt'></i>
@@ -186,6 +187,20 @@ $(document).ready(function() {
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
                                             <label for="category-action"
                                                 class="ml-2 text-sm font-medium text-gray-900">Acción</label>
+                                        </li>
+                                        <li class="flex items-center p-2 hover:bg-gray-100 rounded">
+                                            <input id="category-action" type="checkbox" value="simulacion"
+                                                name="categories[]"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                            <label for="category-action"
+                                                class="ml-2 text-sm font-medium text-gray-900">Simulacion</label>
+                                        </li>
+                                        <li class="flex items-center p-2 hover:bg-gray-100 rounded">
+                                            <input id="category-action" type="checkbox" value="android"
+                                                name="categories[]"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                                            <label for="category-action"
+                                                class="ml-2 text-sm font-medium text-gray-900">Android</label>
                                         </li>
                                         <li class="flex items-center p-2 hover:bg-gray-100 rounded">
                                             <input id="category-adventure" type="checkbox" value="aventura"
@@ -443,13 +458,13 @@ $(document).ready(function() {
                         text: 'Formulario enviado correctamente.'
                     });
                     location.assign('./index');
-                }else{
+                } else {
                     Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Hubo un error al enviar el formulario: ' + response
-                });
-                }  
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un error al enviar el formulario: ' + response
+                    });
+                }
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 Swal.fire({
