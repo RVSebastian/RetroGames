@@ -278,7 +278,7 @@ foreach ($result as $row){
                         ?>
                                 <div class="swiper-slide">
                                     <div class="image-container-detail">
-                                        <a href="./detalle?d=<?php echo base64_encode($row['id']) ?>">
+                                        <a href="./detalle?game=<?php echo $row['nombre'] ?>&d=<?php echo base64_encode($row['id']) ?>">
                                             <img src="./dashboard/components/content/uploads/<?php echo $row['id'].'/'.$row['portada'] ?>"
                                                 onerror="this.onerror=null; this.src='https://static.as.com/dist/resources/images/meristation/placeholder-cover.png';"
                                                 alt="">

@@ -1,8 +1,46 @@
+<footer class="text-light" style="padding-top: 0;padding-bottom:12vh;">
+    <div class="container text-center">
+        <h5 class="mb-4 text-uppercase fw-bold text-white">Mis redes sociales</h5>
+        <div class="d-flex justify-content-center gap-4">
+            <!-- Tiktok -->
+            <a href="https://www.tiktok.com/@megakv" target="_blank" class="text-light" aria-label="TikTok">
+                <i class='bx bxl-tiktok fs-1'></i>
+            </a>
+            <a href="https://www.tiktok.com/@megakv2?_t=ZN-8sD4FNpZm1W&_r=1" target="_blank" class="text-light" aria-label="TikTok 2">
+                <i class='bx bxl-tiktok fs-1'></i>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/profile.php?id=100089144059117&mibextid=ZbWKwL" target="_blank" class="text-light" aria-label="Facebook">
+                <i class='bx bxl-facebook fs-1'></i>
+            </a>
+
+            <!-- YouTube Principal -->
+            <a href="https://youtube.com/@megakv?si=EkDfWG6Ci4pfU0eh" target="_blank" class="text-light" aria-label="YouTube Principal">
+                <i class='bx bxl-youtube fs-1'></i>
+            </a>
+
+            <!-- YouTube Secundario -->
+            <a href="https://youtube.com/@megakv2?si=MDs_dYLhkY4Kvsrw" target="_blank" class="text-light" aria-label="YouTube Secundario">
+                <i class='bx bxl-youtube fs-1'></i>
+            </a>
+        </div>
+        <div class="mt-4">
+            <p class="small text-secondary">&copy; 2024 Megakv. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
+
+
 <div class="fixed-bottom bg-black pt-3 pb-1 shadow-lg footer-1">
     <ul class="nav justify-content-center">
         <li class="nav-item text-center mx-md-4">
             <i class='bx bxs-home text-center text-white'></i>
             <a class="nav-link active text-white" aria-current="page" href="./index">Home</a>
+        </li>
+        <li class="nav-item text-center mx-md-4">
+            <i class='bx bx-dice-5 text-center text-white'></i>
+            <a class="nav-link active text-white" aria-current="page" href="./plataformas">Plataformas</a>
         </li>
         <li class="nav-item text-center mx-md-4">
             <i class='bx bx-search text-center text-white'></i>
@@ -73,7 +111,6 @@ if (swiper2) {
     console.log('cargo');
     $('.swiper-wrapper').toggleClass('d-none');
 }
-
 </script>
 
 </body>

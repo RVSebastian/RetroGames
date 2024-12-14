@@ -592,6 +592,7 @@ label {
         <a href="./index" class="logo"><img src="./img/logo.png" style="width: 65px; height: 65px;" alt="">RetroGames
             <ul class="navlist2 bg-black">
                 <li><a href="./index">Home</a></li>
+                <li><a href="./plataformas">Plataformas</a></li>
                 <li><a href="./search">Search</a></li>
             </ul>
     </header>
