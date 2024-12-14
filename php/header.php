@@ -523,7 +523,7 @@ label {
 
 <head>
     <!-- SEO OPEN -->
-    <title>Games</title>
+    <title>MegaKVRoms</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
@@ -589,7 +589,7 @@ label {
 <body class="bg-1">
 
     <header class="shadow-2 bg-black st-2">
-        <a href="./index" class="logo"><img src="./img/logo.png" style="width: 65px; height: 65px;" alt="">RetroGames
+        <a href="./index" class="logo"><img src="./img/logo.png" style="width: 65px; height: 65px;" alt="">MegaKVRoms
             <ul class="navlist2 bg-black">
                 <li><a href="./index">Home</a></li>
                 <li><a href="./plataformas">Plataformas</a></li>
